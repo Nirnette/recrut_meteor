@@ -1,0 +1,66 @@
+<template name="menu">
+
+<nav class="navbar navbar-default navbar-static-top navbar-fixed-top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-menu" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Inops Recrutor</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-menu">
+      <ul class="nav navbar-nav">
+      	{{ #if currentUser}}
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Gestion des offres <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Voir toutes les offres</a></li>
+            <li><a href="#">Créer une offre</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Gérer mes offres</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tableau de bord <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Tableau de bord</a></li>
+            <li><a href="#">Indicateurs</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Gérer mon équipe</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Liste clients</a></li>
+            <li><a href="#">Gérer les clients</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Liste partenaires</a></li>
+            <li><a href="#">Gérer les partenaires</a></li>
+          </ul>
+        </li>
+        <li class=""><a href="#">Gestion des CV <span class="sr-only">(current)</span></a></li>
+		<li class=""><a href="#">Recherches <span class="sr-only">(current)</span></a></li>
+        {{/if}}
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+      	{{ #if currentUser}}
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mon compte<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Profil</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#" class="logout">Déconnexion</a></li>
+          </ul>
+        </li>
+        {{ else}}
+        {{ >login}}
+        {{/if}}
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+</template>	
