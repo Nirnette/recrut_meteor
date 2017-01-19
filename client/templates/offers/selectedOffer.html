@@ -1,0 +1,64 @@
+<template name="selectedOffer">
+
+<div class="row">
+	<div class="col-xs-12 col-sm-8">
+		<h3>{{title}}</h3>
+	</div>
+	<div class="col-xs-12 col-sm-4">
+		Publiée le {{postingDate}}
+	</div>
+</div>
+<div class="row">
+	<div class="col-sm-12">
+		 {{nbProfiles}} profil(s) à pourvoir avant le {{expiryDate}} pour <strong>{{contactCustomerId}}</strong>
+	</div>
+</div>
+<div class="row">
+	<div class="col-sm-7">
+		Début: {{missionStartingDate}} <br/>
+		Prévision: {{forecast}} jours/hommes <br/>
+		contact commercial : {{contactCommerceId}}
+	</div>
+	<div class="col-sm-5">
+		Durée: {{missionDuration}} jours <br/>
+		Lieu: {{location}} <br/>
+		contact sourcing : {{contactSourcingId}}
+	</div>
+</div>		
+<div class="row">
+	<div class="col-sm-12">
+		<h4>Description :</h4>
+		{{description}}
+	</div>
+</div>	
+{{ #if updateAllOffers}}
+<div class="row">
+	<div class="col-xs-11 edit-button">
+		<a href="/offers/edit/{{_id}}">
+		<button type="button" class="btn btn-primary"> éditer</button>
+	</a>
+	</div>
+	<div class="col-xs-1 ">
+	</div>
+</div>	
+{{ /if}}
+
+
+<script type="text/javascript">
+/*
+_id: 'chercheDev',
+title: 'Recherche développeur full stack',
+description: 'Blabla bla description',
+contactCommerceId: 'commercial',
+contactSourcingId: 'sourcing',
+contactCustomerId: 'axa',
+postingDate: '25/11/2016',
+expiryDate: '25/12/2016',
+location: 'Paris la villette',
+missionStartingDate: '01/01/2017',
+missionDuration:'60',
+forecast: '40',
+nbProfiles: '1'
+*/
+</script>
+</template>	

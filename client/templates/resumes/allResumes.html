@@ -1,0 +1,32 @@
+<template name="allresumes">
+	<div class="col-sm-12">
+		<table class="table table-hover ">
+			<thead>
+				<tr>
+					<th>
+						Intitulé CV
+					</th>
+					<th>
+						Date de publication
+					</th>
+					<th>
+						Trigramme
+					</th>
+					<th>
+						Compagnie
+					</th>
+					<th>
+						Disponibilité
+					</th>		
+				</tr>		
+			</thead>
+			<tbody>
+				{{ #each resumeList}}
+					{{ >resumeInList}}
+				{{/each}}
+			</tbody>
+		</table>
+	</div>
+<script type="text/javascript">
+</script>
+</template>	

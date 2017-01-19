@@ -1,0 +1,32 @@
+<template name="resumeInList">
+	<tr class='clickable-row' data-href="resumes/{{_id}}">
+		<td>
+			{{name}}
+		</td>	
+		<td>
+			<time datetime='{{formatTime timeCreated }}'>
+			{{formatTime postingDate}}</time>
+		</td>	
+		<td>
+			{{trigramme}}
+		</td>	
+		<td>
+			{{companyId}}
+		</td>
+		<td>
+			{{ #if availability}}
+				Oui
+			{{ else}}
+				Non
+			{{ /if}}		
+		</td>
+	</tr>
+	<script type="text/javascript">
+		$(document).ready(function() {
+		    $(".clickable-row").click(function() {
+		        window.document.location = $(this).data("href");
+		    });
+		});
+	</script>		
+</template>	
+

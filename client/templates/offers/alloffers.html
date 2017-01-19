@@ -1,0 +1,29 @@
+<template name="alloffers">
+	<div class="col-sm-12">
+		<table class="table table-hover ">
+			<thead>
+				<tr>
+					<th>
+						Début de mission
+					</th>
+					<th>
+						Date de publication
+					</th>
+					<th>
+						Titre
+					</th>
+					<th>
+						Client
+					</th>
+				</tr>		
+			</thead>
+			<tbody>
+				{{ #each offersList}}
+					{{ >offerInList}}
+				{{/each}}
+			</tbody>
+		</table>
+	</div>
+<script type="text/javascript">
+</script>
+</template>	

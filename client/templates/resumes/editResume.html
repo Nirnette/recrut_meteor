@@ -1,0 +1,89 @@
+<template name="editResume">
+<script type="text/javascript">
+/*
+			_id: 'dev',
+			name: 'développeur full stack',
+			postingDate: '25/11/2016',
+			companyId: 'devService',
+			companyContactId: '0',
+			comment: 'un commentaire',
+			trigramme: 'PLY',
+			availibility: true,
+			price: null
+			*/
+
+</script>
+
+<form>
+	<div class="row">
+		<div class="col-xs-12 col-sm-12">
+			<label>
+				Nom du CV : 
+				<input type="text" name="name" placeholder="" value="{{name}}">
+			</label>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-12">
+			<label>
+				Compagnie du CV :
+				<input type="text" name="companyId" placeholder="" value="{{companyId}}">	
+			</label>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-7">
+			<label>
+				Contact commercial du CV: 
+				<input type="text" name="companyContactId" placeholder="" value="{{companyContactId}}">
+			</label>
+			<label>
+				Trigramme : 
+				<input type="text" name="trigramme" placeholder="" value="{{trigramme}}">
+			</label>			
+			<label>
+				Disponibilité : 
+				<select name="availability">
+						{{ #if availability}}
+					<option value="true">	
+						Oui
+					</option>
+					<option value="false">
+						Non
+					</option>	
+						{{ else }}
+					<option value="false">						
+						Non
+					</option>
+					<option value="true">
+						Oui
+					</option>
+						{{ /if }}
+				</select>
+			</label>
+
+		</div>
+		<div class="col-sm-5">
+			<label>
+				Tarif : 
+				<input type="number" name="price" placeholder="" value="{{price}}">
+			</label>
+		</div>
+	</div>		
+	<div class="row">
+		<div class="col-sm-12">
+			<label>
+				Commentaire : 
+				<textarea  name="comment">{{comment}}</textarea>	
+			</label>
+		</div>
+	</div>	
+	<div class="row">
+		<div class="col-xs-11 edit-button">
+			<input type="submit" class="btn btn-primary" value="valider">
+		</div>
+		<div class="col-xs-1 ">
+		</div>
+	</div>
+</form>
+</template>	

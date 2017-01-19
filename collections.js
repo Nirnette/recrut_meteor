@@ -4,3 +4,4 @@ Offers = new Mongo.Collection('offers');
 Resumes = new Mongo.Collection('resumes');
 Status = new Mongo.Collection('status');
 Companies = new Mongo.Collection('companies');
+OfferStatus = new Mongo.Collection('offer-status');

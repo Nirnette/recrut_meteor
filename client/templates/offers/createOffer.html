@@ -1,0 +1,73 @@
+<template name="createOffer">
+
+<form>
+	<div class="row">
+		<div class="col-xs-12 col-sm-12">
+			<label>
+				Titre : 
+				<input type="text" name="title" placeholder="" value="">
+			</label>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-12">
+			<label>
+				Nombre de profils :
+				<input type="number" name="nbProfiles" placeholder="" value="">				
+			</label>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-7">
+			<label>Date de début de mission: 
+				<input type="date" name="missionStartingDate" placeholder="" value="">
+			</label>
+			<label>Date limite de postulation: 
+				<input type="date" name="expiryDate" placeholder="" value="">
+			</label>
+			<label>
+				Prévision : 
+				<input type="text" name="forecast" placeholder="" value="">
+			</label>			
+			<label>
+				Contact commercial : 
+				<input type="text" name="contactCommerceId" placeholder="" value="">
+			</label>
+
+		</div>
+		<div class="col-sm-5">
+			<label>
+				Durée de la mission : 
+				<input type="text" name="missionDuration" placeholder="" value="">
+			</label>
+			<label>
+				Emplacement : 
+				<input type="text" name="location" placeholder="" value="">
+			</label>
+			<label>
+				Contact sourcing : 
+				<input type="text" name="contactSourcingId" placeholder="" value="">
+			</label>
+			<label>
+				Client : 
+				<input type="text" name="contactCustomerId" placeholder="" value="">
+			</label>
+		</div>
+	</div>		
+	<div class="row">
+		<div class="col-sm-12">
+			<label>
+				Description : 
+				<textarea  name="description"></textarea>	
+			</label>
+		</div>
+	</div>	
+	<div class="row">
+		<div class="col-xs-11 edit-button">
+			<input type="submit" class="btn btn-primary" value="valider">
+		</div>
+		<div class="col-xs-1 ">
+		</div>
+	</div>
+</form>
+</template>	

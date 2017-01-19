@@ -1,46 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 
 Meteor.startup(() => {
-/*  
-	if(Meteor.users.find().count() != ){
-
-		console.log('Example users created');
-
-		Accounts.createUser({
-			firstName: 'Chasles',
-			lastName:  'Kate',
-			title: 'Mme',
-			email: 'kchasles@inops.fr',
-			password: 'admin',
-			createdAt: '22/11/2016',
-			updatedAt: '22/11/2016',
-			enabled: true,
-			telephoneNumber: '0101010101',
-			mobileNumber: '0101010101',
-			adress: '93 rue Ampère, 75017 Paris',
-			legalResponsible: 'false',
-			roles:[
-				{
-					name: 'admin',
-					access: [ 'admin-users']
-				},
-				{
-					name: 'enabledUser',
-					access: [ 'login', 'editAccount']
-				}
-			] 
-
-			}
-			company:  {
-				name: 'Inop\s',
-				adress: '93 rue Ampère, 75017 Paris',
-				telephoneNumber: '+33 1 75 77 13 77',
-				siret: '00000',
-				list: '0'
-			},		
-		});
-	}
-	*/
 
 	Rights.remove({});
 	// On créer des droits test
@@ -53,6 +13,18 @@ Meteor.startup(() => {
 		{
 			_id: 'updateRoles',
 			name: 'updateRoles'
+		},
+		{
+			_id: 'updateResumes',
+			name: 'updateResumes'
+		},
+		{
+			_id: 'viewAllResumes',
+			name: 'viewAllResumes'
+		},
+		{
+			_id: 'updateOffers',
+			name: 'updateOffers'
 		}
 		];
 		_.each(basicRights, function (right){
@@ -73,7 +45,7 @@ Meteor.startup(() => {
 		{
 			_id: 'sourcing',
 			name: 'sourcing',
-			rights_id: ['view-all-offers']
+			rights_id: ['view-all-offers', 'updateOffers', 'updateResumes', 'viewAllResumes']
 		},
 		{
 			_id: 'partner',
@@ -109,7 +81,7 @@ Meteor.startup(() => {
 			profile: {
 				firstName: 'kate',
 				lastName: 'Chasles',
-				roles: ['admin']
+				roles: ['admin', 'sourcing']
 			}
 			
 		});
@@ -129,29 +101,29 @@ Meteor.startup(() => {
 	}
 
 	Resumes.remove({});
-
+	// Création des CV de test
 	if(Resumes.find().count() === 0 ){
 		var basicResumes = [
 		{
 			_id: 'dev',
 			name: 'développeur full stack',
-			postingDate: '25/11/2016',
+			postingDate: '1483353450',
 			companyId: 'devService',
 			companyContactId: '0',
 			comment: 'un commentaire',
 			trigramme: 'PLY',
-			availibility: true,
+			availability: true,
 			price: null
 		},
 		{
 			_id: 'exp',
 			name: 'Expert sécurité',
-			postingDate: '25/11/2016',
+			postingDate: '1483544970',
 			companyId: 'expService',
 			companyContactId: '0',
 			comment: 'un commentaire',
 			trigramme: 'DDI',
-			availibility: true,
+			availability: false,
 			price: 900
 		}		
 		];
@@ -162,7 +134,7 @@ Meteor.startup(() => {
 	}
 
 	Offers.remove({});
-
+	// Création des offres test
 	if(Offers.find().count() === 0 ){
 		var basicOffers = [
 		{
@@ -172,13 +144,14 @@ Meteor.startup(() => {
 			contactCommerceId: 'commercial',
 			contactSourcingId: 'sourcing',
 			contactCustomerId: 'axa',
-			postingDate: '25/11/2016',
+			postingDate: '28/11/2016',
 			expiryDate: '25/12/2016',
 			location: 'Paris la villette',
 			missionStartingDate: '01/01/2017',
 			missionDuration:'60',
 			forecast: '40',
-			nbProfiles: '1'
+			nbProfiles: '1',
+			customer: 'axa'
 		},
 		{
 			_id: 'chercheExp',
@@ -188,12 +161,13 @@ Meteor.startup(() => {
 			contactSourcingId: 'sourcing',
 			contactCustomerId: 'axa',
 			postingDate: '25/11/2016',
-			expiryDate: '25/12/2016',
+			expiryDate: '30/12/2016',
 			location: 'Orsay',
 			missionStartingDate: '01/01/2017',
 			missionDuration:'60',
 			forecast: '40',
-			nbProfiles: '1'
+			nbProfiles: '1',
+			customer: 'axa assurances'
 		}		
 		];
 		_.each(basicOffers, function (offer){
@@ -203,7 +177,7 @@ Meteor.startup(() => {
 	}
 
 	Status.remove({});
-	// Création des rôles test
+	// Création des statuts test
 	if(Status.find().count() === 0 ){
 		var basicStatus = [
 		{
@@ -216,21 +190,97 @@ Meteor.startup(() => {
 		},
 		{
 			_id: '3',
-			name: 'présenté',
+			name: 'proposé',
 		},
 		{
 			_id: '4',
+			name: 'présenté',
+		},
+		{
+			_id: '5',
 			name: 'validé',
 		},	
 		{
-			_id: '5',
-			name: 'vendu',
+			_id: '6',
+			name: 'accepté',
 		}				
 		];
 		_.each(basicStatus, function (status){
 			Status.insert(status);
 		});
 		console.log('Basic Status created');
+	}
+
+	Companies.remove({});
+	// Création des compagnies test
+	if(Companies.find().count() === 0 ){
+		var basicCompanies = [
+		{
+			_id: 'devService',
+			name: 'Developpement Services',
+			adress: '1 avenue des champs élysées, 75008 Paris',
+			email : 'company1@bla.fr',
+			telephoneNumber: "0102030405",
+			SIRET: "00000000",
+			group: null,
+			list: 1
+		},
+		{
+			_id: 'expService',
+			name: 'Experts en sécurité Services',
+			adress: '9 avenue des champs élysées, 75008 Paris',
+			email : 'company1@bla.fr',
+			telephoneNumber: "0504030201",
+			SIRET: "11111111",
+			group: null,
+			list: 2
+		}			
+		];
+		_.each(basicCompanies, function (company){
+			Companies.insert(company);
+		});
+		console.log('Basic Companies created');
+	}
+
+	OfferStatus.remove({});
+	//Création des statuts des offres test
+		if(OfferStatus.find().count() === 0 ){
+		var basicOfferStatus = [
+		{
+			_id: '1',
+			idOffer: 'chercheDev',
+			idStatusName: '1',
+			validated : true
+		},
+		{
+			_id: '2',
+			idOffer: 'chercheDev',
+			idStatusName: '2',
+			validated : true
+		},
+		{
+			_id: '3',
+			idOffer: 'chercheDev',
+			idStatusName: '3',
+			validated : false
+		},
+		{
+			_id: '4',
+			idOffer: 'chercheExp',
+			idStatusName: '1',
+			validated : true
+		},	
+		{
+			_id: '5',
+			idOffer: 'chercheExp',
+			idStatusName: '2',
+			validated : true
+		}				
+		];
+		_.each(basicOfferStatus, function (offerstatus){
+			OfferStatus.insert(offerstatus);
+		});
+		console.log('Basic OfferStatus created');
 	}
 	/*
 

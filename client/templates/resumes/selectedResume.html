@@ -1,0 +1,49 @@
+<template name="selectedResume">
+
+<div class="row">
+	<div class="col-xs-12 col-sm-8">
+		<h3>{{name}}</h3>
+	</div>
+	<div class="col-xs-12 col-sm-4">
+		Publié le 			<time datetime='{{formatTime timeCreated }}'>
+			{{formatTime postingDate}}</time>
+	</div>
+</div>
+<div class="row">
+	<div class="col-sm-7">
+		Compagnie: {{companyId}} <br/>
+		Contact commercial Partenaire : {{companyContactId}}<br/>
+	</div>
+	<div class="col-sm-5">
+		Trigramme: {{trigramme}}  <br/>
+		Disponible: 
+			{{#if availability}}
+				Oui
+			{{ else }}
+				Non
+			{{/if}}		
+
+			<br/>
+		Tarif : {{price}}€ /jour
+	</div>
+</div>		
+<div class="row">
+	<div class="col-sm-12">
+		<h4>Commentaire :</h4>
+		{{comment}}
+	</div>
+</div>	
+{{ #if updateAllResumes}}
+<div class="row">
+	<div class="col-xs-11 edit-button">
+		<a href="/resumes/edit/{{_id}}">
+		<button type="button" class="btn btn-primary"> éditer</button>
+	</a>
+	</div>
+	<div class="col-xs-1 ">
+	</div>
+</div>	
+{{ /if}}
+
+</template>	
+

@@ -1,24 +1,11 @@
 Template.menu.helpers({
-	/*
-	updateUsers: function(){
-		if (Rights.findOne({name: 'updateRoles'})){
-			return true;
-		}
-
-	},
-
-	viewAllOffers: function(){
-		if (Rights.findOne({name: 'view-all-offers'})){
-			return true;
-		}
-	}
-	*/
-
 	
 });
 
 
 Template.menu.events({
+
+	//Fonction qui permet à l'utilisateur de se logout par le bouton logout.
   'click .logout': function(event){
      event.preventDefault();
 		
